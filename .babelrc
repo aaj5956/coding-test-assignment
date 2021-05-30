@@ -28,7 +28,6 @@
           "pages": "./src/client/pages",
           "styles": "./src/client/styles",
           "config": "./src/config",
-          "middlewares": "./src/middlewares",
           "models": "./src/models"
         }
       }

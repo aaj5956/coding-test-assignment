@@ -5,7 +5,6 @@ import helmet from 'helmet';
 import { resolve } from 'path';
 
 import api from 'api';
-import { internalServerErrorMiddleware, resourceNotfoundMiddleware } from 'middlewares';
 
 const app = express();
 
@@ -20,10 +19,20 @@ app.use([
   
 app.use('/api', api);
 
-app.use('/api', internalServerErrorMiddleware);
+app.use('/api', (req, res, next) => {
+  if (req.method !== 'OPTIONS') {
+    return res.status(400).send('Invalid endpoint. Go to /');
+  }
 
-app.use('/api', resourceNotfoundMiddleware);
+  next();
+});
 
-app.use(express.static(resolve(process.cwd(), 'dist')));
+app.use(express.static(resolve(process.cwd(), 'dist', 'client')));
+
+app.use('*', (req, res) => {
+  if (req.method !== 'OPTIONS') {
+    res.status(400).send('Invalid endpoint. Go to /');
+  }
+});
 
 export default app;

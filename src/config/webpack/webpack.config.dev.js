@@ -1,8 +1,14 @@
+import { resolve } from 'path';
 import { build } from 'config/webpack/paths';
 
 export default {
   // Set the mode to development or production
   mode: "development",
+
+  output: {
+    path: resolve(build, 'client'),
+    publicPath: "/",
+  },
 
   // Control how source maps are generated
   devtool: "inline-source-map",
