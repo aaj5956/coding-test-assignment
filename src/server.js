@@ -21,10 +21,10 @@ app.use('/api', api);
 
 app.use('/api', (req, res, next) => {
   if (req.method !== 'OPTIONS') {
-    return res.status(400).send('Invalid endpoint. Go to /');
+    res.status(400).send('Invalid endpoint. Go to /');
+  } else {
+    next();
   }
-
-  next();
 });
 
 app.use(express.static(resolve(process.cwd(), 'dist', 'client')));

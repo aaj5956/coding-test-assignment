@@ -34,7 +34,6 @@ describe('App tests', () => {
   it('can get a bad data response', async () => {
     const res = await chai.request(app).get('/api/photos?id=4');
     expect(res).to.have.status(400);
-    console.log(res.header);
     expect(res.body.code).to.include('error.bad-request.invalid-photos-id');
   });
 
