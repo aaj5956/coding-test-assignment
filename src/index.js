@@ -1,15 +1,15 @@
+/* eslint-disable no-console */
 import { createServer } from 'http';
 import {
   NODE_ENV,
   PORT,
 } from 'config';
+import server from './server';
 
 const root = async () => {
   try {
-    const { default: server } = await import('./server');
-
     createServer(server).listen(PORT, () => {
-      console.log(`Starting the ${NODE_ENV} server...`);
+      console.log(`The ${NODE_ENV} server has started on http://localhost:${PORT}`);
     });
   } catch (error) {
     console.error(error);

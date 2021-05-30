@@ -1,16 +1,11 @@
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-// import cspHtmlWebpackPlugin from 'csp-html-webpack-plugin';
 import { src, build, publicDir } from 'config/webpack/paths';
-
-const cspConfigPolicy = {
-  'img-src': "*",
-};
 
 export default {
   // Where webpack looks to start building the bundle
-  entry: [src + "/client/index.jsx"],
+  entry: [`${src}/client/index.jsx`],
 
   // Where webpack outputs the assets and bundles
   output: {
@@ -28,7 +23,7 @@ export default {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: publicDir + "/assets",
+          from: `${publicDir  }/assets`,
           to: "assets",
           globOptions: {
             ignore: ["*.DS_Store"],
@@ -41,11 +36,10 @@ export default {
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
       title: "RBC Ventures assignment",
-      favicon: publicDir + "/assets/favicon.ico",
-      template: publicDir + "/index.html", // template file
+      favicon: `${publicDir  }/assets/favicon.ico`,
+      template: `${publicDir  }/index.html`, // template file
       filename: "index.html", // output file
     }),
-    // new cspHtmlWebpackPlugin(cspConfigPolicy),
   ],
 
   // Determine how modules within the project are treated

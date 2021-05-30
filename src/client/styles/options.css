@@ -1,8 +1,4 @@
 .options {
   display: flex;
-  justify-content: center;
-}
-
-.label {
-  text-align: center;
+  justify-content: space-around;
 }

@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { build } from 'config/webpack/paths';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
@@ -6,7 +7,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 export default {
   mode: "production",
   output: {
-    path: build,
+    path: resolve(build, 'client'),
     publicPath: "/",
     filename: "js/[name].[contenthash].bundle.js",
   },

@@ -1,8 +1,8 @@
 import { merge } from 'webpack-merge';
 
-import devEnvConfig from 'config/webpack/webpack.config.dev.js';
-import prodEnvConfig from 'config/webpack/webpack.config.prod.js';
-import common from 'config/webpack/webpack.common.js';
+import devEnvConfig from 'config/webpack/webpack.config.dev';
+import prodEnvConfig from 'config/webpack/webpack.config.prod';
+import common from 'config/webpack/webpack.common';
 
 const envs = {
   development: 'dev',

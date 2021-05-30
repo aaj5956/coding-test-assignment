@@ -1,4 +1,4 @@
-import {Router} from 'express';
+import { Router } from 'express';
 import photosController from 'controllers';
 import { BAD_REQUEST } from 'constants/error.types';
 
@@ -14,7 +14,7 @@ photosRouter.get('/', async (req, res) => {
     if(error.type === BAD_REQUEST)
       return res.status(400).json(error);
     
-    throw new error;
+    throw error;
   }
 });
 

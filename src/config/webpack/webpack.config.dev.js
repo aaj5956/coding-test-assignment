@@ -1,4 +1,3 @@
-import webpack from 'webpack';
 import { build } from 'config/webpack/paths';
 
 export default {
@@ -18,8 +17,8 @@ export default {
     port: 3001,
   },
 
-  plugins: [
-    // Only update what has changed on hot reload
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+  // plugins: [
+  //   // Only update what has changed on hot reload
+  //   new webpack.HotModuleReplacementPlugin(),
+  // ],
 };

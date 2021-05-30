@@ -1,5 +1,5 @@
 import isArray from 'lodash/isArray';
-import { internalServerError } from 'models/response.model';
+import { InternalServerError } from 'models/response.model';
 
 const internalServerErrorMiddleware = () => async (err, _req, res, _next) => {
   let message = '';
@@ -12,7 +12,7 @@ const internalServerErrorMiddleware = () => async (err, _req, res, _next) => {
       : `${err.error.message} ${err.error.detail || ''}`;
   }
 
-  return res.status(500).json(internalServerError({ message }));
+  return res.status(500).json(InternalServerError({ message }));
 };
 
 export default internalServerErrorMiddleware;

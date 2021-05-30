@@ -5,4 +5,9 @@ export const ChoiceContext = createContext({
   setChoice: () => {},
 });
 
+export const DelayContext = createContext({
+  delay: '0',
+  setDelay: () => {},
+});
+
 export const PhotoContext = createContext([]);

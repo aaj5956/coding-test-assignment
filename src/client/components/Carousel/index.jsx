@@ -26,18 +26,16 @@ const Carousel = () => {
     <section className='carousel'>
       <BsFillCaretLeftFill className='left-arrow' onClick={prevSlide} />
       <BsFillCaretRightFill className='right-arrow' onClick={nextSlide} />
-      {photos.map((slide, index) => {
-        return (
-          <div
-            className={index === current ? 'slide active' : 'slide'}
-            key={index}
-          >
-            {index === current && (
-              <img src={slide} className='image' />
-            )}
-          </div>
-        );
-      })}
+      {photos.map((slide, index) => (
+        <div
+          className={index === current ? 'slide active' : 'slide'}
+          key={index}
+        >
+          {index === current && (
+            <img src={slide} className='image' />
+          )}
+        </div>
+      ))}
     </section>
   );
 };

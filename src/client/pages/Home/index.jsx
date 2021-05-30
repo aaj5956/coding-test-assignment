@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import Carousel from 'components/Carousel';
 import Loading from 'components/Loading';
 import Options from 'components/Options';
-import { ChoiceContext, PhotoContext} from 'contexts/Home';
+import { ChoiceContext, DelayContext, PhotoContext} from 'contexts/Home';
 
 const Home = () => {
   const [choice, setChoice] = useState('1');
+  const [delay, setDelay] = useState('0');
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -23,19 +24,19 @@ const Home = () => {
         setPhotos(data);
         setTimeout(() => {
           setLoading(false);
-        }, 5000);
+        }, delay);
       })
-      .catch(err => {
-        console.log('Error in api response');
-        console.log(err);
+      .catch(() => {
         setLoading(false);
       });
-  }, [choice]);
+  }, [choice, delay]);
 
   return (
     <div>
-      <ChoiceContext.Provider value={{choice, setChoice}}>
-        <Options />
+      <ChoiceContext.Provider value={{ choice, setChoice }}>
+        <DelayContext.Provider value={{ delay, setDelay }}>
+          <Options />
+        </DelayContext.Provider>
       </ChoiceContext.Provider>
       <PhotoContext.Provider value={photos}>
         {loading ? <Loading /> : <Carousel /> }
