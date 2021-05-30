@@ -1,0 +1,37 @@
+{
+  "presets": ["@babel/env", "@babel/react"],
+  "plugins": [
+    "@babel/syntax-dynamic-import",
+    "@babel/transform-runtime",
+    [
+      "@babel/transform-spread",
+      {
+        "loose": true
+      }
+    ],
+    "@babel/proposal-optional-chaining",
+    "react-hot-loader/babel",
+    "@loadable/babel-plugin",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "api": "./src/api",
+          "constants": "./src/api/constants",
+          "controllers": "./src/api/controllers",
+          "routes": "./src/api/routes",
+          "services": "./src/api/services",
+          "client": "./src/client",
+          "components": "./src/client/components",
+          "contexts": "./src/client/contexts",
+          "pages": "./src/client/pages",
+          "styles": "./src/client/styles",
+          "config": "./src/config",
+          "middlewares": "./src/middlewares",
+          "models": "./src/models"
+        }
+      }
+    ]
+  ]
+}
