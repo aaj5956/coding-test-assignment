@@ -13,22 +13,30 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/api/photos?id=${choice}`)
-      .then(res => {
-        if(res.ok) {
-          return res.json();
-        }
-        throw res;
-      })
-      .then(({ data }) => {
-        setPhotos(data);
-        setTimeout(() => {
+    if(choice !== 'invalid') {
+      fetch(`http://localhost:3000/api/photos?id=${choice}`)
+        .then(res => {
+          if(res.ok) {
+            return res.json();
+          }
+          throw res;
+        })
+        .then(({ data }) => {
+          setPhotos(data);
+          setTimeout(() => {
+            setLoading(false);
+          }, delay);
+        })
+        .catch(() => {
+          console.log('error here');
+          setPhotos('error')
           setLoading(false);
-        }, delay);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+        });
+    } else {
+      console.log('setting photos error');
+      setPhotos('error');
+      setLoading(false);
+    }
   }, [choice, delay]);
 
   return (
